@@ -1,3 +1,7 @@
+[user]
+
+  name = Brian Wobst
+
 [includeIf "gitdir:~/code/"]
 
   path = ~/.gitconfig-trd
