@@ -59,6 +59,7 @@ alias dt "cd ~/Desktop"
 alias c "cd ~/code"
 
 alias g "git"
+alias gd "git diff"
 alias gac "git commit -am $argv"
 alias gop "git open"
 alias gpom "git pull origin main"
