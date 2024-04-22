@@ -62,6 +62,7 @@ alias g "git"
 alias gop "git open"
 alias gpom "git pull origin main"
 alias gs "git status"
+alias gss "git status -s"
 alias gcaw "git add -A && git commit -m \"WIP\""
 alias gmetro "git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(normal)%aD%C(reset) %C(green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(bold white)%s%C(reset) %C(dim white)- %an%C(reset)' --all $argv"
 
