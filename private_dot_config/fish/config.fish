@@ -59,6 +59,7 @@ alias dt "cd ~/Desktop"
 alias c "cd ~/code"
 
 alias g "git"
+alias gac "git commit -am $argv"
 alias gop "git open"
 alias gpom "git pull origin main"
 alias gs "git status"
@@ -76,33 +77,33 @@ alias ntc "npm run test:coverage"
 alias k "kubectl"
 
 # List all files colorized in long format
-alias l="ls -lFG"
+alias l "ls -lFG"
 
 # List only directories
-alias lsd="ls -lFG | grep --color=never '^d'"
+alias lsd "ls -lFG | grep --color=never '^d'"
 
 # Always enable colored `grep` output
 # Note: `GREP_OPTIONS="--color=auto"` is deprecated, hence the alias usage.
-alias grep='grep --color=auto'
+alias grep 'grep --color=auto'
 
 # IP addresses
-alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
-alias localip="ipconfig getifaddr en0"
-alias ips="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)' | awk '{ sub(/inet6? (addr:)? ?/, \"\"); print }'"
+alias ip "dig +short myip.opendns.com @resolver1.opendns.com"
+alias localip "ipconfig getifaddr en0"
+alias ips "ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)' | awk '{ sub(/inet6? (addr:)? ?/, \"\"); print }'"
 
 # Show/hide hidden files in Finder
-alias show="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
-alias hide="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
+alias show "defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
+alias hide "defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
 
 # Hide/show all desktop icons (useful when presenting)
-alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
-alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
+alias hidedesktop "defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
+alias showdesktop "defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
 
 # Trim new lines and copy to clipboard
-alias c="tr -d '\n' | pbcopy"
+alias c "tr -d '\n' | pbcopy"
 
 # Recursively delete `.DS_Store` files
-alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
+alias cleanup "find . -type f -name '*.DS_Store' -ls -delete"
 
 ####################################################################################################
 ## Apex Platform Environment Variables
