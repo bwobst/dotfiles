@@ -26,8 +26,7 @@ fish_add_path /usr/local/go/bin
 fish_add_path /usr/local/sbin
 fish_add_path /usr/sbin
 fish_add_path ~/.nvm/nvm.sh
-fish_add_path $(brew --prefix coreutils)/libexec/gnubin # Add brew-installed GNU core utilities bin
-fish_add_path $(brew --prefix)/share/npm/bin # Add npm-installed package bin
+fish_add_path ~/.bin
 
 ####################################################################################################
 ## Default editor
