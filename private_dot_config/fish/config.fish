@@ -60,7 +60,8 @@ alias c "cd ~/code"
 
 alias g "git"
 alias gd "git diff"
-alias gac "git commit -am $argv"
+alias gac "git add . && git commit -am $argv"
+alias gco "git checkout $argv"
 alias gop "git open"
 alias gpom "git pull origin main"
 alias gs "git status"
@@ -105,6 +106,13 @@ alias c "tr -d '\n' | pbcopy"
 
 # Recursively delete `.DS_Store` files
 alias cleanup "find . -type f -name '*.DS_Store' -ls -delete"
+
+# Reload the shell (i.e. invoke as a login shell)
+alias reload "source ~/.config/fish/config.fish"
+
+# Pipe from JQ/YQ to less with colors
+alias jql "jq --color-output | less -R"
+alias yql "yq --colors | less -R"
 
 ####################################################################################################
 ## Apex Platform Environment Variables
