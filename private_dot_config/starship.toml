@@ -76,6 +76,7 @@ symbol = " "
 [kubernetes]
 disabled = false
 style = 'white bold'
+detect_folders = ['helm']
 
 [localip]
 disabled = false
@@ -96,7 +97,7 @@ symbol = "󰆥 "
 symbol = " "
 
 [nodejs]
-symbol = " " 
+symbol = " "
 detect_files = ['package.json']
 
 [ocaml]

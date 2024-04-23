@@ -22,9 +22,9 @@
 
   rebase = false
 
-[credential]
-
-  helper = osxkeychain
+# [credential]
+#
+#   helper = osxkeychain
 
 [alias]
 
