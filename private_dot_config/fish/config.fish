@@ -4,16 +4,8 @@
 set fish_greeting
 
 ####################################################################################################
-## Default start directory
-####################################################################################################
-# if status is-interactive
-#   cd /Users/brianwobst/code
-# end
-
-####################################################################################################
 ## Set $PATH
 ####################################################################################################
-fish_add_path /Applications/Postgres.app/Contents/Versions/latest/bin
 fish_add_path /bin
 fish_add_path /opt/homebrew/bin
 fish_add_path /sbin
@@ -26,7 +18,7 @@ fish_add_path /usr/local/go/bin
 fish_add_path /usr/local/sbin
 fish_add_path /usr/sbin
 fish_add_path ~/.nvm/nvm.sh
-fish_add_path ~/.bin
+fish_add_path ~/bin
 
 ####################################################################################################
 ## Default editor
