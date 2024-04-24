@@ -10,6 +10,8 @@ fi
 sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply bwobst
 
 # Set fish as default shell
+# macOS: /usr/bin/fish
+# Linux: /opt/homebrew/bin/fish
 sudo chsh -s $(which fish)
 
 # Install zoxide
