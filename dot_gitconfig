@@ -2,11 +2,11 @@
 
   name = Brian Wobst
 
-[includeIf "gitdir:~/code/"]
+[includeIf "gitdir:~/code/work/"]
 
   path = ~/.gitconfig-trd
 
-[includeIf "gitdir:~/other/"]
+[includeIf "gitdir:~/code/home/"]
 
   path = ~/.gitconfig-personal
 
