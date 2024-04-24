@@ -4,11 +4,11 @@
 
 [includeIf "gitdir:~/code/work/"]
 
-  path = ~/.gitconfig-trd
+  path = ~/.gitconfig-work
 
 [includeIf "gitdir:~/code/home/"]
 
-  path = ~/.gitconfig-personal
+  path = ~/.gitconfig-home
 
 [pager]
 
