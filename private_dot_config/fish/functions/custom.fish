@@ -9,3 +9,8 @@ function path
         echo $p
     end
 end
+
+function pathls
+    string replace : '\n' $PATH
+end
+
