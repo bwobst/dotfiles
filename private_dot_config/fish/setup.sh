@@ -17,5 +17,3 @@ curl -sS https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | 
 
 # Install starship
 curl -sS https://starship.rs/install.sh | sh
-
-
