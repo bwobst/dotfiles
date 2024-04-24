@@ -2,13 +2,13 @@
 
   name = Brian Wobst
 
-[includeIf "gitdir:~/code/work/"]
-
-  path = ~/.gitconfig-work
-
 [includeIf "gitdir:~/code/home/"]
 
   path = ~/.gitconfig-home
+
+[includeIf "gitdir:~/code/work/"]
+
+  path = ~/.gitconfig-work
 
 [pager]
 
