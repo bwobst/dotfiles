@@ -44,5 +44,5 @@ SETUVAR fish_pager_color_selected_background:\x2d\x2dbackground\x3dbrblack
 SETUVAR fish_pager_color_selected_completion:\x1d
 SETUVAR fish_pager_color_selected_description:\x1d
 SETUVAR fish_pager_color_selected_prefix:\x1d
-SETUVAR fish_user_paths:/home/bwobst/\x2econfig/fish/bin\x1e/home/bwobst/bin\x1e/usr/local/sbin\x1e/Applications/Postgres\x2eapp/Contents/Versions/latest/bin\x1e/opt/homebrew/opt/coreutils/libexec/gnubin\x1e/usr/local/go/bin\x1e/usr/local\x1e/usr/local/bin\x1e/usr/sbin\x1e/usr/bin\x1e/sbin\x1e/opt/homebrew/bin\x1e/bin
+SETUVAR fish_user_paths:/Users/brianwobst/\x2econfig/fish/bin\x1e/home/bwobst/\x2econfig/fish/bin\x1e/home/bwobst/bin\x1e/usr/local/sbin\x1e/Applications/Postgres\x2eapp/Contents/Versions/latest/bin\x1e/opt/homebrew/opt/coreutils/libexec/gnubin\x1e/usr/local/go/bin\x1e/usr/local\x1e/usr/local/bin\x1e/usr/sbin\x1e/usr/bin\x1e/sbin\x1e/opt/homebrew/bin\x1e/bin
 SETUVAR nvm_default_version:v20\x2e12\x2e2
