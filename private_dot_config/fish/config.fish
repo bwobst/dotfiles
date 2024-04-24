@@ -19,6 +19,7 @@ fish_add_path /usr/local/sbin
 fish_add_path /usr/sbin
 fish_add_path ~/.nvm/nvm.sh
 fish_add_path ~/bin
+fish_add_path ~/.config/fish/bin
 
 ####################################################################################################
 ## Default editor
