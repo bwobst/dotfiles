@@ -7,4 +7,3 @@ end
 function pathls
     string replace : '\n' $PATH
 end
-
