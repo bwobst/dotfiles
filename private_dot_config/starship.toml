@@ -36,6 +36,9 @@ symbol = " "
 [fossil_branch]
 symbol = " "
 
+[gcloud]
+disabled = true
+
 [git_branch]
 symbol = " "
 ignore_branches = ['master', 'main']
