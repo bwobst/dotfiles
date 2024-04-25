@@ -2,7 +2,7 @@
   command = "code"
   args = ["--wait"]
 
-[cd]
 {{ if eq .chezmoi.os "darwin" }}
+[cd]
   command = "/opt/homebrew/bin/fish"
 {{ end }}
