@@ -1,5 +1,5 @@
 # Install and initialize chezmoi and dotfiles
-sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply $GITHUB_USERNAME
+sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply {{ .github_username }}
 
 # Set fish as default shell
 {{ if eq .chezmoi.os "darwin" }}
