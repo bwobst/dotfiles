@@ -97,6 +97,7 @@ alias hide "defaults write com.apple.finder AppleShowAllFiles -bool false && kil
 alias hidedesktop "defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
 alias showdesktop "defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
 
+# TODO: pbcopy only works on macOS. Need to find a Linux alternative.
 # Trim new lines and copy to clipboard
 alias c "tr -d '\n' | pbcopy"
 
@@ -106,6 +107,7 @@ alias cleanup "find . -type f -name '*.DS_Store' -ls -delete"
 # Reload the shell (i.e. invoke as a login shell)
 alias reload "source ~/.config/fish/config.fish"
 
+# TODO: Install jq and yq as part of the init process
 # Pipe from JQ/YQ to less with colors
 alias jql "jq --color-output | less -R"
 alias yql "yq --colors | less -R"
