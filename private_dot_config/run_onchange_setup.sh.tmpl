@@ -1,9 +1,11 @@
 #!/bin/bash
 
 # Install and initialize chezmoi and dotfiles
+echo "Installing chezmoi and dotfiles..."
 sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply {{ .github_username }}
 
 # Set fish as default shell
+echo "Setting fish as default shell..."
 {{ if eq .chezmoi.os "darwin" }}
 sudo chsh -s /opt/homebrew/bin/fish
 {{ else if eq .chezmoi.os "linux" }}
@@ -13,6 +15,7 @@ echo "OS not supported: $(uname)"
 {{ end }}
 
 # Install zoxide
+echo "Installing zoxide..."
 {{ if eq .chezmoi.os "darwin" }}
 brew install zoxide
 {{ else if eq .chezmoi.os "linux" }}
@@ -22,7 +25,9 @@ echo "OS not supported: $(uname)"
 {{ end }}
 
 # Install starship
+echo "Installing starship..."
 curl -sS https://starship.rs/install.sh | sh
 
 # Install Tailscale
+echo "Installing Tailscale..."
 curl -fsSL https://tailscale.com/install.sh | sh
