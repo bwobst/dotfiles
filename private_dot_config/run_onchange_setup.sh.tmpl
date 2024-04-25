@@ -13,7 +13,13 @@ echo "OS not supported: $(uname)"
 {{ end }}
 
 # Install zoxide
+{{ if eq .chezmoi.os "darwin" }}
+brew install zoxide
+{{ else if eq .chezmoi.os "linux" }}
 curl -sS https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | bash
+{{ else }}
+echo "OS not supported: $(uname)"
+{{ end }}
 
 # Install starship
 curl -sS https://starship.rs/install.sh | sh
