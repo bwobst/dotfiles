@@ -1,11 +1,3 @@
-if [[ "$(uname)" == "Linux" ]]; then
-    echo "Operating system is Linux."
-elif [[ "$(uname)" == "Darwin" ]]; then
-    echo "Operating system is macOS."
-else
-    echo "Operating system is something else."
-fi
-
 # Install and initialize chezmoi and dotfiles
 sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply bwobst
 
