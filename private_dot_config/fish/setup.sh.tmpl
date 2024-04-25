@@ -10,9 +10,13 @@ fi
 sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply bwobst
 
 # Set fish as default shell
-# macOS: /usr/bin/fish
-# Linux: /opt/homebrew/bin/fish
-sudo chsh -s $(which fish)
+{{ if eq .chezmoi.os "darwin" }}
+sudo chsh -s /opt/homebrew/bin/fish
+{{ else if eq .chezmoi.os "linux" }}
+sudo chsh -s /usr/bin/fish
+{{ else }}
+echo "OS not supported: $(uname)"
+{{ end }}
 
 # Install zoxide
 curl -sS https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | bash
