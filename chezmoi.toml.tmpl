@@ -1,0 +1,10 @@
+echo "Hi from chezmoi.toml.tmpl"
+
+[edit]
+  command = "code"
+  args = ["--wait"]
+
+[cd]
+{{ if eq .chezmoi.os "darwin" }}
+  command = "/opt/homebrew/bin/fish"
+{{ end }}
