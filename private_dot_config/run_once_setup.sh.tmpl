@@ -1,11 +1,13 @@
 #!/bin/bash
 
-# Install and initialize chezmoi and dotfiles
-echo "Installing chezmoi and dotfiles..."
+echo "\n##################################################"
+echo "## Installing chezmoi and dotfiles"
+echo "##################################################\n"
 sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply {{ .github_username }}
 
-# Set fish as default shell
-echo "Setting fish as default shell..."
+echo "\n##################################################"
+echo "## Setting fish as default shell"
+echo "##################################################\n"
 {{ if eq .chezmoi.os "darwin" }}
 sudo chsh -s /opt/homebrew/bin/fish
 {{ else if eq .chezmoi.os "linux" }}
@@ -14,33 +16,44 @@ sudo chsh -s /usr/bin/fish
 echo "OS not supported: $(uname)"
 {{ end }}
 
-# Install zoxide
-echo "Installing zoxide..."
-{{ if eq .chezmoi.os "darwin" }}
-brew install zoxide
-{{ else if eq .chezmoi.os "linux" }}
-curl -sS https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | bash
-{{ else }}
-echo "OS not supported: $(uname)"
-{{ end }}
-
-# Install starship
-echo "Installing starship..."
-curl -sS https://starship.rs/install.sh | sh
-
-# Install Tailscale
-echo "Installing Tailscale..."
-curl -fsSL https://tailscale.com/install.sh | sh
-
-# Install Lazy Docker
-echo "Installing lazydocker..."
-curl https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh | bash
-
-# Install lazydocker
-# Check if lazydocker is already installed
-if which lazydocker >/dev/null
-    echo "lazydocker is already installed."
+echo "\n##################################################"
+echo "## Installing zoxide"
+echo "##################################################\n"
+if command -v zoxide &> /dev/null; then
+  echo "Zoxide is already installed."
 else
-    # If not installed, run the installation command
-    curl -sSL https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh | sh
-end
+  {{ if eq .chezmoi.os "darwin" }}
+  brew install zoxide
+  {{ else if eq .chezmoi.os "linux" }}
+  curl -sS https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | bash
+  {{ else }}
+  echo "OS not supported: $(uname)"
+  {{ end }}
+fi
+
+echo "\n##################################################"
+echo "## Installing starship"
+echo "##################################################\n"
+if command -v starship &> /dev/null; then
+  echo "Starship is already installed."
+else
+  curl -sS https://starship.rs/install.sh | sh
+fi
+
+echo "\n##################################################"
+echo "## Installing Tailscale"
+echo "##################################################\n"
+if command -v tailscale &> /dev/null; then
+  echo "Tailscale is already installed."
+else
+  curl -fsSL https://tailscale.com/install.sh | sh
+fi
+
+echo "\n##################################################"
+echo "## Installing lazydocker"
+echo "##################################################\n"
+if command -v lazydocker &> /dev/null; then
+  echo "lazydocker is already installed."
+else
+  curl https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh | bash
+fi
