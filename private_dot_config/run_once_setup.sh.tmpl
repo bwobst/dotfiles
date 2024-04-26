@@ -1,6 +1,6 @@
 #!/bin/bash
 
-printf "\n##################################################"
+printf "\n##################################################\n"
 printf "## Installing chezmoi and dotfiles"
 printf "\n##################################################\n"
 if command -v chezmoi &> /dev/null; then
@@ -11,7 +11,7 @@ fi
 
 printf "\n##################################################\n"
 printf "## Setting fish as default shell"
-printf "##################################################\n"
+printf "\n##################################################\n"
 {{ if eq .chezmoi.os "darwin" }}
 sudo chsh -s /opt/homebrew/bin/fish
 {{ else if eq .chezmoi.os "linux" }}
