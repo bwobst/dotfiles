@@ -1,59 +1,63 @@
 #!/bin/bash
 
-echo "\n##################################################"
-echo "## Installing chezmoi and dotfiles"
-echo "##################################################\n"
-sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply {{ .github_username }}
+printf "\n##################################################"
+printf "## Installing chezmoi and dotfiles"
+printf "##################################################\n"
+if command -v chezmoi &> /dev/null; then
+  printf "Chezmoi is already installed."
+else
+  sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply {{ .github_username }}
+fi
 
-echo "\n##################################################"
-echo "## Setting fish as default shell"
-echo "##################################################\n"
+printf "\n##################################################"
+printf "## Setting fish as default shell"
+printf "##################################################\n"
 {{ if eq .chezmoi.os "darwin" }}
 sudo chsh -s /opt/homebrew/bin/fish
 {{ else if eq .chezmoi.os "linux" }}
 sudo chsh -s /usr/bin/fish
 {{ else }}
-echo "OS not supported: $(uname)"
+printf "OS not supported: $(uname)"
 {{ end }}
 
-echo "\n##################################################"
-echo "## Installing zoxide"
-echo "##################################################\n"
+printf "\n##################################################"
+printf "## Installing zoxide"
+printf "##################################################\n"
 if command -v zoxide &> /dev/null; then
-  echo "Zoxide is already installed."
+  printf "Zoxide is already installed."
 else
   {{ if eq .chezmoi.os "darwin" }}
   brew install zoxide
   {{ else if eq .chezmoi.os "linux" }}
   curl -sS https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | bash
   {{ else }}
-  echo "OS not supported: $(uname)"
+  printf "OS not supported: $(uname)"
   {{ end }}
 fi
 
-echo "\n##################################################"
-echo "## Installing starship"
-echo "##################################################\n"
+printf "\n##################################################"
+printf "## Installing starship"
+printf "##################################################\n"
 if command -v starship &> /dev/null; then
-  echo "Starship is already installed."
+  printf "Starship is already installed."
 else
   curl -sS https://starship.rs/install.sh | sh
 fi
 
-echo "\n##################################################"
-echo "## Installing Tailscale"
-echo "##################################################\n"
+printf "\n##################################################"
+printf "## Installing Tailscale"
+printf "##################################################\n"
 if command -v tailscale &> /dev/null; then
-  echo "Tailscale is already installed."
+  printf "Tailscale is already installed."
 else
   curl -fsSL https://tailscale.com/install.sh | sh
 fi
 
-echo "\n##################################################"
-echo "## Installing lazydocker"
-echo "##################################################\n"
+printf "\n##################################################"
+printf "## Installing lazydocker"
+printf "##################################################\n"
 if command -v lazydocker &> /dev/null; then
-  echo "lazydocker is already installed."
+  printf "lazydocker is already installed."
 else
   curl https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh | bash
 fi
