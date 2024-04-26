@@ -2,14 +2,14 @@
 
 printf "\n##################################################"
 printf "## Installing chezmoi and dotfiles"
-printf "##################################################\n"
+printf "\n##################################################\n"
 if command -v chezmoi &> /dev/null; then
   printf "Chezmoi is already installed."
 else
   sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply {{ .github_username }}
 fi
 
-printf "\n##################################################"
+printf "\n##################################################\n"
 printf "## Setting fish as default shell"
 printf "##################################################\n"
 {{ if eq .chezmoi.os "darwin" }}
@@ -20,9 +20,9 @@ sudo chsh -s /usr/bin/fish
 printf "OS not supported: $(uname)"
 {{ end }}
 
-printf "\n##################################################"
+printf "\n##################################################\n"
 printf "## Installing zoxide"
-printf "##################################################\n"
+printf "\n##################################################\n"
 if command -v zoxide &> /dev/null; then
   printf "Zoxide is already installed."
 else
@@ -35,27 +35,27 @@ else
   {{ end }}
 fi
 
-printf "\n##################################################"
+printf "\n##################################################\n"
 printf "## Installing starship"
-printf "##################################################\n"
+printf "\n##################################################\n"
 if command -v starship &> /dev/null; then
   printf "Starship is already installed."
 else
   curl -sS https://starship.rs/install.sh | sh
 fi
 
-printf "\n##################################################"
+printf "\n##################################################\n"
 printf "## Installing Tailscale"
-printf "##################################################\n"
+printf "\n##################################################\n"
 if command -v tailscale &> /dev/null; then
   printf "Tailscale is already installed."
 else
   curl -fsSL https://tailscale.com/install.sh | sh
 fi
 
-printf "\n##################################################"
+printf "\n##################################################\n"
 printf "## Installing lazydocker"
-printf "##################################################\n"
+printf "\n##################################################\n"
 if command -v lazydocker &> /dev/null; then
   printf "lazydocker is already installed."
 else
