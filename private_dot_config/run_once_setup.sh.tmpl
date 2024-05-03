@@ -60,13 +60,11 @@ fi
 printf "\n##################################################\n"
 printf "## Installing Tailscale"
 printf "\n##################################################\n"
-printf "Install Tailscale manually if you haven't already.\n"
-printf "curl -fsSL https://tailscale.com/install.sh | sh\n"
-# if command -v tailscale &> /dev/null; then
-#   printf "Tailscale is already installed.\n"
-# else
-#   curl -fsSL https://tailscale.com/install.sh | sh
-# fi
+if command -v /Applications/Tailscale.app/Contents/MacOS/Tailscale &> /dev/null; then
+  printf "Tailscale is already installed.\n"
+else
+  curl -fsSL https://tailscale.com/install.sh | sh
+fi
 
 printf "\n##################################################\n"
 printf "## Installing lazydocker"
