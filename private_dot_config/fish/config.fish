@@ -118,13 +118,13 @@ alias tailscale "/Applications/Tailscale.app/Contents/MacOS/Tailscale"
 ####################################################################################################
 ## Apex Platform Environment Variables
 ####################################################################################################
-export APEX_API_PATH=~/code/apex/apex-api
-export APEX_UI_PATH=~/code/apex/apex-ui
-export APEX_ADMIN_API_PATH=~/code/apex/apex-admin-api
-export APEX_ADMIN_UI_PATH=~/code/apex/apex-admin-ui
-export AUTH_SERVER_PATH=~/code/apex/auth-server
-export POSTGRES_DATA_PATH=~/code/apex/psql-data
-export GENERATED_VALUES_FILE_PATH=~/code/apex/apex-api/scripts/generated-values.yml
+export APEX_API_PATH=~/code/work/apex/apex-api
+export APEX_UI_PATH=~/code/work/apex/apex-ui
+export APEX_ADMIN_API_PATH=~/code/work/apex/apex-admin-api
+export APEX_ADMIN_UI_PATH=~/code/work/apex/apex-admin-ui
+export AUTH_SERVER_PATH=~/code/work/apex/auth-server
+export POSTGRES_DATA_PATH=~/code/work/apex/psql-data
+export GENERATED_VALUES_FILE_PATH=~/code/work/apex/apex-api/scripts/generated-values.yml
 
 ####################################################################################################
 ## Set up kubectl auto-completion
