@@ -12,25 +12,41 @@ fi
 printf "\n##################################################\n"
 printf "## Installing fish shell"
 printf "\n##################################################\n"
+{{ if eq .chezmoi.os "darwin" }}
 if command -v /opt/homebrew/bin/fish &> /dev/null; then
   printf "Fish is already installed.\n"
 else
   brew install fish
 fi
+{{ else if eq .chezmoi.os "linux" }}
+if command -v /usr/local/bin/fish &> /dev/null; then
+  printf "Fish is already installed.\n"
+else
+  sudo apt-add-repository ppa:fish-shell/release-3
+  sudo apt-get update && sudo apt-get upgrade
+  sudo apt-get install fish
+fi
+{{ else }}
+printf "OS not supported: $(uname). Please install fish manually.\n"
+{{ end }}
 
 printf "\n##################################################\n"
 printf "## Setting fish as default shell"
 printf "\n##################################################\n"
 {{ if eq .chezmoi.os "darwin" }}
-if command -v /opt/homebrew/bin/fish &> /dev/null; then
+if [ "$SHELL" == "/opt/homebrew/bin/fish" ]; then
   printf "Fish is already the default shell.\n"
 else
   sudo chsh -s /opt/homebrew/bin/fish
 fi
 {{ else if eq .chezmoi.os "linux" }}
-sudo chsh -s /usr/bin/fish
+if [ "$SHELL" == "/usr/local/bin/fish" ]; then
+  printf "Fish is already the default shell.\n"
+else
+  sudo chsh -s /usr/local/bin/fish
+fi
 {{ else }}
-printf "OS not supported: $(uname)"
+printf "OS not supported: $(uname). Please set fish as the default shell manually.\n"
 {{ end }}
 
 printf "\n##################################################\n"
@@ -44,7 +60,7 @@ else
   {{ else if eq .chezmoi.os "linux" }}
   curl -sS https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | bash
   {{ else }}
-  printf "OS not supported: $(uname)"
+  printf "OS not supported: $(uname). Please install zoxide manually.\n"
   {{ end }}
 fi
 
@@ -60,11 +76,16 @@ fi
 printf "\n##################################################\n"
 printf "## Installing Tailscale"
 printf "\n##################################################\n"
+{{ if eq .chezmoi.os "darwin" }}
 if command -v /Applications/Tailscale.app/Contents/MacOS/Tailscale &> /dev/null; then
   printf "Tailscale is already installed.\n"
 else
   curl -fsSL https://tailscale.com/install.sh | sh
 fi
+{{ else }}
+printf "OS not supported: $(uname). Please install Tailscale manually.\n"
+printf "curl -fsSL https://tailscale.com/install.sh | sh\n"
+{{ end }}
 
 printf "\n##################################################\n"
 printf "## Installing lazydocker"
