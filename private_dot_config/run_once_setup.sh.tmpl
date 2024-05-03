@@ -10,10 +10,23 @@ else
 fi
 
 printf "\n##################################################\n"
+printf "## Installing fish shell"
+printf "\n##################################################\n"
+if command -v /opt/homebrew/bin/fish &> /dev/null; then
+  printf "Fish is already installed.\n"
+else
+  brew install fish
+fi
+
+printf "\n##################################################\n"
 printf "## Setting fish as default shell"
 printf "\n##################################################\n"
 {{ if eq .chezmoi.os "darwin" }}
-sudo chsh -s /opt/homebrew/bin/fish
+if command -v /opt/homebrew/bin/fish &> /dev/null; then
+  printf "Fish is already the default shell.\n"
+else
+  sudo chsh -s /opt/homebrew/bin/fish
+fi
 {{ else if eq .chezmoi.os "linux" }}
 sudo chsh -s /usr/bin/fish
 {{ else }}
@@ -47,11 +60,13 @@ fi
 printf "\n##################################################\n"
 printf "## Installing Tailscale"
 printf "\n##################################################\n"
-if command -v tailscale &> /dev/null; then
-  printf "Tailscale is already installed.\n"
-else
-  curl -fsSL https://tailscale.com/install.sh | sh
-fi
+printf "Install Tailscale manually if you haven't already.\n"
+printf "curl -fsSL https://tailscale.com/install.sh | sh\n"
+# if command -v tailscale &> /dev/null; then
+#   printf "Tailscale is already installed.\n"
+# else
+#   curl -fsSL https://tailscale.com/install.sh | sh
+# fi
 
 printf "\n##################################################\n"
 printf "## Installing lazydocker"
