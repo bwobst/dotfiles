@@ -100,7 +100,7 @@
 [branch]
 
   # Show most recently changed branches first.
-  sort = -committerdate
+	sort = -committerdate
 
 [core]
 
@@ -178,4 +178,6 @@
   default = simple
   # Make `git push` push relevant annotated tags when pushing branches out.
   followTags = true
-  autoSetupRemote = true
+	autoSetupRemote = true
+[column]
+	ui = auto
