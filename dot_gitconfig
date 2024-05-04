@@ -180,4 +180,4 @@
   followTags = true
 	autoSetupRemote = true
 [column]
-	ui = auto
+  ui = auto
