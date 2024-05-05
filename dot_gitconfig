@@ -180,4 +180,6 @@
   followTags = true
 	autoSetupRemote = true
 [column]
-  ui = auto
+	ui = auto
+[maintenance]
+	repo = /Users/brianwobst/code/work/apex-photos/apex-photos-pm
