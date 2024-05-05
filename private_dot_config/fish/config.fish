@@ -110,8 +110,8 @@ alias reload "source ~/.config/fish/config.fish"
 
 # TODO: Install jq and yq as part of the init process
 # Pipe from JQ/YQ to less with colors
-alias jql "jq --color-output | less -R"
-alias yql "yq --colors | less -R"
+alias jql "jq --color-output | less -IR"
+alias yql "yq --colors | less -IR"
 
 alias tailscale "/Applications/Tailscale.app/Contents/MacOS/Tailscale"
 
