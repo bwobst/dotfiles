@@ -83,6 +83,7 @@ if command -v /usr/bin/tailscale &> /dev/null; then
   printf "Tailscale is already installed.\n"
 else
   curl -fsSL https://tailscale.com/install.sh | sh
+fi
 {{ else }}
 printf "OS not supported: $(uname). Please install Tailscale manually.\n"
 printf "curl -fsSL https://tailscale.com/install.sh | sh\n"
