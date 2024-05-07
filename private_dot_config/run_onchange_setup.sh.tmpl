@@ -22,7 +22,7 @@ else
   sudo apt update
   sudo apt install fish
   {{ else }}
-  printf "OS not supported: $(uname). Please install fish manually.\n"
+  printf "OS \"$(uname)\" not supported. Please install fish manually.\n"
   {{ end }}
 fi
 
@@ -42,7 +42,7 @@ else
   sudo chsh -s /usr/bin/fish
 fi
 {{ else }}
-printf "OS not supported: $(uname). Please set fish as the default shell manually.\n"
+printf "OS \"$(uname)\" not supported. Please set fish as the default shell manually.\n"
 {{ end }}
 
 printf "\n##################################################\n"
@@ -56,7 +56,7 @@ else
   {{ else if eq .chezmoi.os "linux" }}
   curl -sS https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | bash
   {{ else }}
-  printf "OS not supported: $(uname). Please install zoxide manually.\n"
+  printf "OS \"$(uname)\" not supported. Please install zoxide manually.\n"
   {{ end }}
 fi
 
@@ -85,7 +85,7 @@ else
   curl -fsSL https://tailscale.com/install.sh | sh
 fi
 {{ else }}
-printf "OS not supported: $(uname). Please install Tailscale manually.\n"
+printf "OS \"$(uname)\" not supported. Please install Tailscale manually.\n"
 printf "curl -fsSL https://tailscale.com/install.sh | sh\n"
 {{ end }}
 
@@ -100,7 +100,7 @@ else
 fi
 # Automated Linux install doesn't work. Have to manually run install.
 {{ else }}
-printf "OS not supported: $(uname). Please install lazydocker manually.\n"
+printf "OS \"$(uname)\" not supported. Please install lazydocker manually.\n"
 printf "https://github.com/jesseduffield/lazydocker#installation\n"
 {{ end }}
 
