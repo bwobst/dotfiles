@@ -12,23 +12,19 @@ fi
 printf "\n##################################################\n"
 printf "## Installing fish shell"
 printf "\n##################################################\n"
-{{ if eq .chezmoi.os "darwin" }}
-if command -v /opt/homebrew/bin/fish &> /dev/null; then
+if command -v fish &> /dev/null; then
   printf "Fish is already installed.\n"
 else
+  {{ if eq .chezmoi.os "darwin" }}
   brew install fish
-fi
-{{ else if eq .chezmoi.os "linux" }}
-if command -v /usr/local/bin/fish &> /dev/null; then
-  printf "Fish is already installed.\n"
-else
+  {{ else if eq .chezmoi.os "linux" }}
   sudo apt-add-repository ppa:fish-shell/release-3
-  sudo apt-get update && sudo apt-get upgrade
-  sudo apt-get install fish
+  sudo apt update
+  sudo apt install fish
+  {{ else }}
+  printf "OS not supported: $(uname). Please install fish manually.\n"
+  {{ end }}
 fi
-{{ else }}
-printf "OS not supported: $(uname). Please install fish manually.\n"
-{{ end }}
 
 printf "\n##################################################\n"
 printf "## Setting fish as default shell"
@@ -40,10 +36,10 @@ else
   sudo chsh -s /opt/homebrew/bin/fish
 fi
 {{ else if eq .chezmoi.os "linux" }}
-if [ "$SHELL" == "/usr/local/bin/fish" ]; then
+if [ "$SHELL" == "/usr/bin/fish" ]; then
   printf "Fish is already the default shell.\n"
 else
-  sudo chsh -s /usr/local/bin/fish
+  sudo chsh -s /usr/bin/fish
 fi
 {{ else }}
 printf "OS not supported: $(uname). Please set fish as the default shell manually.\n"
@@ -82,6 +78,11 @@ if command -v /Applications/Tailscale.app/Contents/MacOS/Tailscale &> /dev/null;
 else
   curl -fsSL https://tailscale.com/install.sh | sh
 fi
+{{ else if eq .chezmoi.os "linux" }}
+if command -v /usr/bin/tailscale &> /dev/null; then
+  printf "Tailscale is already installed.\n"
+else
+  curl -fsSL https://tailscale.com/install.sh | sh
 {{ else }}
 printf "OS not supported: $(uname). Please install Tailscale manually.\n"
 printf "curl -fsSL https://tailscale.com/install.sh | sh\n"
@@ -97,5 +98,6 @@ else
 fi
 
 printf "\n##################################################\n"
-printf "## Reload shell for changes to take effect"
+printf "## Setup complete"
 printf "\n##################################################\n"
+printf "Please restart your terminal to apply changes.\n"
