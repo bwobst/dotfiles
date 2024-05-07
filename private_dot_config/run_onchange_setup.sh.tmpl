@@ -98,13 +98,7 @@ if command -v lazydocker &> /dev/null; then
 else
   brew install jesseduffield/lazydocker/lazydocker
 fi
-{{ else if eq .chezmoi.os "linux" }}
-# Check if lazydocker is installed and executable. Has to be done differently because it was acting up.
-if [ -x "$(command -v lazydocker)" ]; then
-  printf "lazydocker is already installed.\n"
-else
-  sudo curl https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh | bash
-fi
+# Automated Linux install doesn't work. Have to manually run install.
 {{ else }}
 printf "OS not supported: $(uname). Please install lazydocker manually.\n"
 printf "https://github.com/jesseduffield/lazydocker#installation\n"
