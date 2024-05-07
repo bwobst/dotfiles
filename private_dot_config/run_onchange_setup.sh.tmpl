@@ -103,7 +103,7 @@ fi
 if [ -x "$(command -v lazydocker)" ]; then
   printf "lazydocker is already installed.\n"
 else
-  curl https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh | bash
+  sudo curl https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh | bash
 fi
 {{ else }}
 printf "OS not supported: $(uname). Please install lazydocker manually.\n"
