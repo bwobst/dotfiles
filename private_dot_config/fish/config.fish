@@ -9,7 +9,7 @@ set fish_greeting
 fish_add_path /bin
 fish_add_path /opt/homebrew/bin
 fish_add_path /sbin
-fish_add_path /sw/bin/
+fish_add_path /sw/bin
 fish_add_path /usr/bin
 fish_add_path /usr/local
 fish_add_path /usr/local/bin
