@@ -11,7 +11,7 @@ else
   {{ else if eq .chezmoi.os "linux" }}
   sudo apt-add-repository ppa:fish-shell/release-3
   sudo apt update
-  sudo apt install fish
+  sudo apt install fish -y
   {{ else }}
   printf "OS \"$(uname)\" not supported. Please install fish manually.\n"
   {{ end }}
@@ -31,6 +31,8 @@ if [ "$SHELL" == "/usr/bin/fish" ]; then
   printf "Fish is already the default shell.\n"
 else
   sudo chsh -s /usr/bin/fish
+  printf "\nRefreshing terminal...\n"
+  source ~/.config/fish/config.fish
 fi
 {{ else }}
 printf "OS \"$(uname)\" not supported. Please set fish as the default shell manually.\n"
@@ -75,6 +77,7 @@ if command -v /usr/bin/tailscale &> /dev/null; then
   printf "Tailscale is already installed.\n"
 else
   curl -fsSL https://tailscale.com/install.sh | sh
+  sudo tailscale up
 fi
 {{ else }}
 printf "OS \"$(uname)\" not supported. Please install Tailscale manually.\n"
@@ -103,29 +106,9 @@ if command -v node &> /dev/null; then
   printf "Nodejs is already installed.\n"
 else
   curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+  source ~/.nvm/nvm.sh
   nvm install 20
 fi
-
-printf "\n##################################################\n"
-printf "## Installing kubectl"
-printf "\n##################################################\n"
-{{ if eq .chezmoi.os "darwin" }}
-if command -v kubectl &> /dev/null; then
-  printf "kubectl is already installed.\n"
-else
-  brew install kubectl
-fi
-{{ else if eq .chezmoi.os "linux" }}
-if command -v kubectl &> /dev/null; then
-  printf "kubectl is already installed.\n"
-else
-  snap install kubectl --classic
-fi
-{{ else }}
-printf "OS \"$(uname)\" not supported. Please install kubectl manually.\n"
-printf "https://kubernetes.io/docs/tasks/tools/#kubectl\n"
-{{ end }}
-
 
 printf "\n##################################################\n"
 printf "## Setup complete"
