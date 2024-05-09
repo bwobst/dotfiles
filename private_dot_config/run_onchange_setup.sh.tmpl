@@ -1,15 +1,6 @@
 #!/bin/bash
 
 printf "\n##################################################\n"
-printf "## Installing chezmoi and dotfiles"
-printf "\n##################################################\n"
-if command -v chezmoi &> /dev/null; then
-  printf "Chezmoi is already installed.\n"
-else
-  sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply {{ .github_username }}
-fi
-
-printf "\n##################################################\n"
 printf "## Installing fish shell"
 printf "\n##################################################\n"
 if command -v fish &> /dev/null; then
@@ -44,6 +35,7 @@ fi
 {{ else }}
 printf "OS \"$(uname)\" not supported. Please set fish as the default shell manually.\n"
 {{ end }}
+printf "\nIf the default shell was not changed, you can (probably) change it in the terminal preferences.\n"
 
 printf "\n##################################################\n"
 printf "## Installing zoxide"
@@ -103,6 +95,37 @@ fi
 printf "OS \"$(uname)\" not supported. Please install lazydocker manually.\n"
 printf "https://github.com/jesseduffield/lazydocker#installation\n"
 {{ end }}
+
+printf "\n##################################################\n"
+printf "## Installing nodejs"
+printf "\n##################################################\n"
+if command -v node &> /dev/null; then
+  printf "Nodejs is already installed.\n"
+else
+  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+  nvm install 20
+fi
+
+printf "\n##################################################\n"
+printf "## Installing kubectl"
+printf "\n##################################################\n"
+{{ if eq .chezmoi.os "darwin" }}
+if command -v kubectl &> /dev/null; then
+  printf "kubectl is already installed.\n"
+else
+  brew install kubectl
+fi
+{{ else if eq .chezmoi.os "linux" }}
+if command -v kubectl &> /dev/null; then
+  printf "kubectl is already installed.\n"
+else
+  snap install kubectl --classic
+fi
+{{ else }}
+printf "OS \"$(uname)\" not supported. Please install kubectl manually.\n"
+printf "https://kubernetes.io/docs/tasks/tools/#kubectl\n"
+{{ end }}
+
 
 printf "\n##################################################\n"
 printf "## Setup complete"
