@@ -7,29 +7,26 @@ set fish_greeting
 ## Set $PATH
 ####################################################################################################
 fish_add_path /bin
+fish_add_path /opt/homebrew/bin
 fish_add_path /sbin
+fish_add_path /sw/bin
 fish_add_path /usr/bin
 fish_add_path /usr/local
 fish_add_path /usr/local/bin
 fish_add_path /usr/local/git/bin
+fish_add_path /usr/local/go/bin
 fish_add_path /usr/local/sbin
 fish_add_path /usr/sbin
 fish_add_path ~/.config/fish/bin
 fish_add_path ~/.local/bin
-fish_add_path ~/bin
-
-{{ if eq .osid "darwin" }}
 fish_add_path ~/.nvm/nvm.sh
-fish_add_path /opt/homebrew/bin
-fish_add_path /sw/bin
-{{ end }}
+fish_add_path ~/bin
 
 ####################################################################################################
 ## Default editor
 ####################################################################################################
 export EDITOR='vim'
 
-{{ if eq .osid "darwin" }}
 ####################################################################################################
 ## Set up Homebrew for MacOS
 ####################################################################################################
@@ -41,7 +38,6 @@ end
 fish_add_path -gP "$HOMEBREW_PREFIX/bin" "$HOMEBREW_PREFIX/sbin";
 ! set -q MANPATH; and set MANPATH ''; set -gx MANPATH "$HOMEBREW_PREFIX/share/man" $MANPATH;
 ! set -q INFOPATH; and set INFOPATH ''; set -gx INFOPATH "$HOMEBREW_PREFIX/share/info" $INFOPATH;
-{{ end }}
 
 ####################################################################################################
 ## Aliases

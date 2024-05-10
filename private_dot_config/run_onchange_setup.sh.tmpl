@@ -83,6 +83,24 @@ printf "curl -fsSL https://tailscale.com/install.sh | sh\n"
 {{ end }}
 
 printf "\n##################################################\n"
+printf "## Installing NVM and Nodejs"
+printf "\n##################################################\n"
+{{ if or .osid "darwin" "linux-ubuntu" }}
+if command -v nvm &> /dev/null; then
+  printf "NVM is already installed.\n"
+else
+  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+  # Make NVM available in the current shell
+  export NVM_DIR="$HOME/.nvm"
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+  nvm install 22
+fi
+{{ else }}
+printf "OS \"$(uname)\" not supported. Please install NVM and Nodejs manually.\n"
+printf "https://nodejs.org/en/download\n"
+{{ end }}
+
+printf "\n##################################################\n"
 printf "## Setup complete"
 printf "\n##################################################\n"
 printf "Please restart your terminal to apply changes.\n"
