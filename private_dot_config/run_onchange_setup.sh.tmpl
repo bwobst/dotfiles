@@ -3,87 +3,87 @@
 printf "\n##################################################\n"
 printf "## Installing fish shell"
 printf "\n##################################################\n"
-# if command -v fish &> /dev/null; then
-#   printf "Fish is already installed.\n"
-# else
-#   {{ if eq .chezmoi.os "darwin" }}
-#   brew install fish
-#   {{ else if eq .chezmoi.osid "linux-ubuntu" }}
-#   sudo apt-add-repository ppa:fish-shell/release-3 -y
-#   sudo apt update
-#   sudo apt install fish -y
-#   {{ else }}
-#   printf "OS \"$(uname)\" not supported. Please install fish manually.\n"
-#   {{ end }}
-# fi
+if command -v fish &> /dev/null; then
+  printf "Fish is already installed.\n"
+else
+  {{ if eq .chezmoi.os "darwin" }}
+  brew install fish
+  {{ else if eq .chezmoi.osid "linux-ubuntu" }}
+  sudo apt-add-repository ppa:fish-shell/release-3 -y
+  sudo apt update
+  sudo apt install fish -y
+  {{ else }}
+  printf "OS \"$(uname)\" not supported. Please install fish manually.\n"
+  {{ end }}
+fi
 
-# printf "\n##################################################\n"
-# printf "## Setting fish as default shell"
-# printf "\n##################################################\n"
-# {{ if eq .chezmoi.os "darwin" }}
-# if [ "$SHELL" == "/opt/homebrew/bin/fish" ]; then
-#   printf "Fish is already the default shell.\n"
-# else
-#   chsh -s /opt/homebrew/bin/fish
-# fi
-# {{ else if eq .chezmoi.osid "linux-ubuntu" }}
-# if [ "$SHELL" == "/usr/bin/fish" ]; then
-#   printf "Fish is already the default shell.\n"
-# else
-#   chsh -s /usr/bin/fish
-#   fish
-# fi
-# {{ else }}
-# printf "OS \"$(uname)\" not supported. Please set fish as the default shell manually.\n"
-# {{ end }}
-# printf "\nIf the default shell was not changed, you can (probably) change it in the terminal preferences.\n"
+printf "\n##################################################\n"
+printf "## Setting fish as default shell"
+printf "\n##################################################\n"
+{{ if eq .chezmoi.os "darwin" }}
+if [ "$SHELL" == "/opt/homebrew/bin/fish" ]; then
+  printf "Fish is already the default shell.\n"
+else
+  chsh -s /opt/homebrew/bin/fish
+fi
+{{ else if eq .chezmoi.osid "linux-ubuntu" }}
+if [ "$SHELL" == "/usr/bin/fish" ]; then
+  printf "Fish is already the default shell.\n"
+else
+  chsh -s /usr/bin/fish
+  fish
+fi
+{{ else }}
+printf "OS \"$(uname)\" not supported. Please set fish as the default shell manually.\n"
+{{ end }}
+printf "\nIf the default shell was not changed, you can (probably) change it in the terminal preferences.\n"
 
-# printf "\n##################################################\n"
-# printf "## Installing zoxide"
-# printf "\n##################################################\n"
-# if command -v zoxide &> /dev/null; then
-#   printf "Zoxide is already installed.\n"
-# else
-#   {{ if eq .chezmoi.os "darwin" }}
-#   brew install zoxide
-#   {{ else if eq .chezmoi.osid "linux-ubuntu" }}
-#   curl -sS https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | bash
-#   {{ else }}
-#   printf "OS \"$(uname)\" not supported. Please install zoxide manually.\n"
-#   {{ end }}
-# fi
+printf "\n##################################################\n"
+printf "## Installing zoxide"
+printf "\n##################################################\n"
+if command -v zoxide &> /dev/null; then
+  printf "Zoxide is already installed.\n"
+else
+  {{ if eq .chezmoi.os "darwin" }}
+  brew install zoxide
+  {{ else if eq .chezmoi.osid "linux-ubuntu" }}
+  curl -sS https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | bash
+  {{ else }}
+  printf "OS \"$(uname)\" not supported. Please install zoxide manually.\n"
+  {{ end }}
+fi
 
-# printf "\n##################################################\n"
-# printf "## Installing starship"
-# printf "\n##################################################\n"
-# if command -v starship &> /dev/null; then
-#   printf "Starship is already installed.\n"
-# else
-#   curl -sS https://starship.rs/install.sh | sh
-# fi
+printf "\n##################################################\n"
+printf "## Installing starship"
+printf "\n##################################################\n"
+if command -v starship &> /dev/null; then
+  printf "Starship is already installed.\n"
+else
+  curl -sS https://starship.rs/install.sh | sh
+fi
 
-# printf "\n##################################################\n"
-# printf "## Installing Tailscale"
-# printf "\n##################################################\n"
-# {{ if eq .chezmoi.os "darwin" }}
-# if command -v /Applications/Tailscale.app/Contents/MacOS/Tailscale &> /dev/null; then
-#   printf "Tailscale is already installed.\n"
-# else
-#   curl -fsSL https://tailscale.com/install.sh | sh
-# fi
-# {{ else if eq .chezmoi.osid "linux-ubuntu" }}
-# if command -v /usr/bin/tailscale &> /dev/null; then
-#   printf "Tailscale is already installed.\n"
-# else
-#   curl -fsSL https://tailscale.com/install.sh | sh
-#   sudo tailscale up
-# fi
-# {{ else }}
-# printf "OS \"$(uname)\" not supported. Please install Tailscale manually.\n"
-# printf "curl -fsSL https://tailscale.com/install.sh | sh\n"
-# {{ end }}
+printf "\n##################################################\n"
+printf "## Installing Tailscale"
+printf "\n##################################################\n"
+{{ if eq .chezmoi.os "darwin" }}
+if command -v /Applications/Tailscale.app/Contents/MacOS/Tailscale &> /dev/null; then
+  printf "Tailscale is already installed.\n"
+else
+  curl -fsSL https://tailscale.com/install.sh | sh
+fi
+{{ else if eq .chezmoi.osid "linux-ubuntu" }}
+if command -v /usr/bin/tailscale &> /dev/null; then
+  printf "Tailscale is already installed.\n"
+else
+  curl -fsSL https://tailscale.com/install.sh | sh
+  sudo tailscale up
+fi
+{{ else }}
+printf "OS \"$(uname)\" not supported. Please install Tailscale manually.\n"
+printf "curl -fsSL https://tailscale.com/install.sh | sh\n"
+{{ end }}
 
-# printf "\n##################################################\n"
-# printf "## Setup complete"
-# printf "\n##################################################\n"
-# printf "Please restart your terminal to apply changes.\n"
+printf "\n##################################################\n"
+printf "## Setup complete"
+printf "\n##################################################\n"
+printf "Please restart your terminal to apply changes.\n"
