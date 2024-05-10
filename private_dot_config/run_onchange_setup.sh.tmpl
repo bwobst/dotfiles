@@ -89,11 +89,12 @@ printf "\n##################################################\n"
 if command -v nvm &> /dev/null; then
   printf "NVM is already installed.\n"
 else
-  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
-  # Make NVM available in the current shell
-  export NVM_DIR="$HOME/.nvm"
-  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-  nvm install 22
+  printf "TODO: Install NVM\n"
+fi
+if command -v node &> /dev/null; then
+  printf "Nodejs is already installed.\n"
+else
+  printf "TODO: Install Nodejs\n"
 fi
 {{ else }}
 printf "OS \"$(uname)\" not supported. Please install NVM and Nodejs manually.\n"
