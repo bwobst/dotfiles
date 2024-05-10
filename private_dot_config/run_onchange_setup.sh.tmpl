@@ -83,22 +83,47 @@ printf "curl -fsSL https://tailscale.com/install.sh | sh\n"
 {{ end }}
 
 printf "\n##################################################\n"
-printf "## Installing NVM and Nodejs"
+printf "## Installing Fisher"
+printf "\n##################################################\n"
+{{ if or .osid "darwin" "linux-ubuntu" }}
+if command -v fisher &> /dev/null; then
+  printf "Fisher is already installed.\n"
+else
+  curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
+fi
+{{ else }}
+printf "OS \"$(uname)\" not supported. Please install Fisher manually.\n"
+printf "https://github.com/jorgebucaran/fisher\n"
+{{ end }}
+
+printf "\n##################################################\n"
+printf "## Installing NVM"
 printf "\n##################################################\n"
 {{ if or .osid "darwin" "linux-ubuntu" }}
 if command -v nvm &> /dev/null; then
   printf "NVM is already installed.\n"
 else
-  printf "TODO: Install NVM\n"
+  fisher install jorgebucaran/nvm.fish
 fi
+{{ else }}
+printf "OS \"$(uname)\" not supported. Please install NVM manually.\n"
+printf "https://github.com/jorgebucaran/nvm.fish\n"
+{{ end }}
+
+printf "\n##################################################\n"
+printf "## Installing Nodejs"
+printf "\n##################################################\n"
+{{ if or .osid "darwin" "linux-ubuntu" }}
 if command -v node &> /dev/null; then
   printf "Nodejs is already installed.\n"
 else
-  printf "TODO: Install Nodejs\n"
+  nvm install 22
+  nvm use 22
+  set --universal nvm_default_version 22
 fi
 {{ else }}
-printf "OS \"$(uname)\" not supported. Please install NVM and Nodejs manually.\n"
-printf "https://nodejs.org/en/download\n"
+printf "OS \"$(uname)\" not supported. Please install Nodejs via NVM manually.\n"
+printf "https://github.com/nvm-sh/nvm?tab=readme-ov-file#installing-and-updating\n"
 {{ end }}
 
 printf "\n##################################################\n"
