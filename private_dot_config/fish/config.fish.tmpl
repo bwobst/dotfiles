@@ -19,7 +19,7 @@ fish_add_path ~/.local/bin
 fish_add_path ~/.nvm/nvm.sh
 fish_add_path ~/bin
 
-{{ if eq .chezmoi.os "darwin" }}
+{{ if eq .osid "darwin" }}
 fish_add_path /opt/homebrew/bin
 fish_add_path /sw/bin
 {{ end }}
@@ -29,7 +29,7 @@ fish_add_path /sw/bin
 ####################################################################################################
 export EDITOR='vim'
 
-{{ if eq .chezmoi.os "darwin" }}
+{{ if eq .osid "darwin" }}
 ####################################################################################################
 ## Set up Homebrew for MacOS
 ####################################################################################################
