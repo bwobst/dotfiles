@@ -1,9 +1,9 @@
-#!/usr/bin/fish
+#!/bin/bash
 
 printf "\n##################################################\n"
 printf "## Installing zoxide"
 printf "\n##################################################\n"
-if command -v zoxide > /dev/null 2>&1
+if command -v zoxide &> /dev/null; then
   printf "Zoxide is already installed.\n"
 else
   {{ if eq .osid "darwin" }}
