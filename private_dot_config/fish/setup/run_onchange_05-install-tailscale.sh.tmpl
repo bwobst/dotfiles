@@ -4,18 +4,18 @@ printf "\n##################################################\n"
 printf "## Installing Tailscale"
 printf "\n##################################################\n"
 {{ if eq .osid "darwin" }}
-if command -v /Applications/Tailscale.app/Contents/MacOS/Tailscale &> /dev/null; then
+if command -v /Applications/Tailscale.app/Contents/MacOS/Tailscale > /dev/null 2>&1
   printf "Tailscale is already installed.\n"
 else
   curl -fsSL https://tailscale.com/install.sh | sh
-fi
+end
 {{ else if eq .osid "linux-ubuntu" }}
-if command -v /usr/bin/tailscale &> /dev/null; then
+if command -v /usr/bin/tailscale > /dev/null 2>&1
   printf "Tailscale is already installed.\n"
 else
   curl -fsSL https://tailscale.com/install.sh | sh
   sudo tailscale up
-fi
+end
 {{ else }}
 printf "OS \"$(uname)\" not supported. Please install Tailscale manually.\n"
 printf "curl -fsSL https://tailscale.com/install.sh | sh\n"

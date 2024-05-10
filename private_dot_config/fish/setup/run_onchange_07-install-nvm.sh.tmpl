@@ -4,11 +4,11 @@ printf "\n##################################################\n"
 printf "## Installing NVM"
 printf "\n##################################################\n"
 {{ if or .osid "darwin" "linux-ubuntu" }}
-if command -v nvm &> /dev/null; then
+if command -v nvm > /dev/null 2>&1
   printf "NVM is already installed.\n"
 else
   fisher install jorgebucaran/nvm.fish
-fi
+end
 {{ else }}
 printf "OS \"$(uname)\" not supported. Please install NVM manually.\n"
 printf "https://github.com/jorgebucaran/nvm.fish\n"
