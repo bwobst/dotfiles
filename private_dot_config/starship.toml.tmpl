@@ -102,7 +102,11 @@ symbol = " "
 
 [nodejs]
 symbol = " "
+{{ if eq .chezmoi.osid "darwin" }}
 detect_files = ['package.json']
+{{ else }}
+disabled = true
+{{ end }}
 
 [ocaml]
 symbol = " "
