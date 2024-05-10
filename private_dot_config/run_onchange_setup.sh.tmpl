@@ -31,7 +31,6 @@ if [ "$SHELL" == "/usr/bin/fish" ]; then
   printf "Fish is already the default shell.\n"
 else
   chsh -s /usr/bin/fish
-  fish
 fi
 {{ else }}
 printf "OS \"$(uname)\" not supported. Please set fish as the default shell manually.\n"
