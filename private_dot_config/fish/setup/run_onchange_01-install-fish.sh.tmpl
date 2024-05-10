@@ -3,7 +3,7 @@
 printf "\n##################################################\n"
 printf "## Installing fish shell"
 printf "\n##################################################\n"
-if command -v fish > /dev/null 2>&1
+if command -v fish &> /dev/null; then
   printf "Fish is already installed.\n"
 else
   {{ if eq .osid "darwin" }}
