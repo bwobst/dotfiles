@@ -1,0 +1,16 @@
+#!/usr/bin/fish
+
+printf "\n##################################################\n"
+printf "## Installing zoxide"
+printf "\n##################################################\n"
+if command -v zoxide &> /dev/null; then
+  printf "Zoxide is already installed.\n"
+else
+  {{ if eq .osid "darwin" }}
+  brew install zoxide
+  {{ else if eq .osid "linux-ubuntu" }}
+  curl -sS https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | bash
+  {{ else }}
+  printf "OS \"$(uname)\" not supported. Please install zoxide manually.\n"
+  {{ end }}
+fi

@@ -1,0 +1,15 @@
+#!/usr/bin/fish
+
+printf "\n##################################################\n"
+printf "## Installing Fisher"
+printf "\n##################################################\n"
+{{ if or .osid "darwin" "linux-ubuntu" }}
+if command -v fisher &> /dev/null; then
+  printf "Fisher is already installed.\n"
+else
+  curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
+fi
+{{ else }}
+printf "OS \"$(uname)\" not supported. Please install Fisher manually.\n"
+printf "https://github.com/jorgebucaran/fisher\n"
+{{ end }}

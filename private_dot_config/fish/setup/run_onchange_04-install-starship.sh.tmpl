@@ -1,0 +1,10 @@
+#!/usr/bin/fish
+
+printf "\n##################################################\n"
+printf "## Installing starship"
+printf "\n##################################################\n"
+if command -v starship &> /dev/null; then
+  printf "Starship is already installed.\n"
+else
+  curl -sS https://starship.rs/install.sh | sh
+fi

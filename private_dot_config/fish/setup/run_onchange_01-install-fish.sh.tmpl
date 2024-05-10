@@ -1,0 +1,18 @@
+#!/bin/bash
+
+printf "\n##################################################\n"
+printf "## Installing fish shell"
+printf "\n##################################################\n"
+if command -v fish &> /dev/null; then
+  printf "Fish is already installed.\n"
+else
+  {{ if eq .osid "darwin" }}
+  brew install fish
+  {{ else if eq .osid "linux-ubuntu" }}
+  sudo apt-add-repository ppa:fish-shell/release-3 -y
+  sudo apt update
+  sudo apt install fish -y
+  {{ else }}
+  printf "OS \"$(uname)\" not supported. Please install fish manually.\n"
+  {{ end }}
+fi

@@ -1,0 +1,21 @@
+#!/bin/bash
+
+printf "\n##################################################\n"
+printf "## Setting fish as default shell"
+printf "\n##################################################\n"
+{{ if eq .osid "darwin" }}
+if [ "$SHELL" == "/opt/homebrew/bin/fish" ]; then
+  printf "Fish is already the default shell.\n"
+else
+  chsh -s /opt/homebrew/bin/fish
+fi
+{{ else if eq .osid "linux-ubuntu" }}
+if [ "$SHELL" == "/usr/bin/fish" ]; then
+  printf "Fish is already the default shell.\n"
+else
+  chsh -s /usr/bin/fish
+fi
+{{ else }}
+printf "OS \"$(uname)\" not supported. Please set fish as the default shell manually.\n"
+{{ end }}
+printf "\nIf the default shell was not changed, you can (probably) change it in the terminal preferences.\n"
