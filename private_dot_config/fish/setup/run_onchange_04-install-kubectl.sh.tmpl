@@ -7,9 +7,10 @@ if command -v kubectl &> /dev/null; then
   printf "kubectl is already installed.\n"
 else
 {{ if eq .osid "darwin" }}
-  curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/darwin/arm64/kubectl"
+  brew install kubectl
 {{ else if eq .osid "linux-ubuntu" }}
   curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+  sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
 {{ else }}
   printf "OS \"$(uname)\" not supported. Please install kubectl manually.\n"
   printf "https://kubernetes.io/docs/tasks/tools\n"
