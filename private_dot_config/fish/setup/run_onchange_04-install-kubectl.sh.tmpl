@@ -1,0 +1,12 @@
+#!/bin/bash
+
+printf "\n##################################################\n"
+printf "## Installing kubectl"
+printf "\n##################################################\n"
+if command -v kubectl &> /dev/null; then
+  printf "kubectl is already installed.\n"
+else
+  curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+fi
+
+
