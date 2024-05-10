@@ -6,9 +6,9 @@ printf "\n##################################################\n"
 if command -v fish &> /dev/null; then
   printf "Fish is already installed.\n"
 else
-  {{ if eq .chezmoi.os "darwin" }}
+  {{ if eq .osid "darwin" }}
   brew install fish
-  {{ else if eq .chezmoi.osid "linux-ubuntu" }}
+  {{ else if eq .osid "linux-ubuntu" }}
   sudo apt-add-repository ppa:fish-shell/release-3 -y
   sudo apt update
   sudo apt install fish -y
@@ -20,13 +20,13 @@ fi
 printf "\n##################################################\n"
 printf "## Setting fish as default shell"
 printf "\n##################################################\n"
-{{ if eq .chezmoi.os "darwin" }}
+{{ if eq .osid "darwin" }}
 if [ "$SHELL" == "/opt/homebrew/bin/fish" ]; then
   printf "Fish is already the default shell.\n"
 else
   chsh -s /opt/homebrew/bin/fish
 fi
-{{ else if eq .chezmoi.osid "linux-ubuntu" }}
+{{ else if eq .osid "linux-ubuntu" }}
 if [ "$SHELL" == "/usr/bin/fish" ]; then
   printf "Fish is already the default shell.\n"
 else
@@ -44,9 +44,9 @@ printf "\n##################################################\n"
 if command -v zoxide &> /dev/null; then
   printf "Zoxide is already installed.\n"
 else
-  {{ if eq .chezmoi.os "darwin" }}
+  {{ if eq .osid "darwin" }}
   brew install zoxide
-  {{ else if eq .chezmoi.osid "linux-ubuntu" }}
+  {{ else if eq .osid "linux-ubuntu" }}
   curl -sS https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | bash
   {{ else }}
   printf "OS \"$(uname)\" not supported. Please install zoxide manually.\n"
@@ -65,13 +65,13 @@ fi
 printf "\n##################################################\n"
 printf "## Installing Tailscale"
 printf "\n##################################################\n"
-{{ if eq .chezmoi.os "darwin" }}
+{{ if eq .osid "darwin" }}
 if command -v /Applications/Tailscale.app/Contents/MacOS/Tailscale &> /dev/null; then
   printf "Tailscale is already installed.\n"
 else
   curl -fsSL https://tailscale.com/install.sh | sh
 fi
-{{ else if eq .chezmoi.osid "linux-ubuntu" }}
+{{ else if eq .osid "linux-ubuntu" }}
 if command -v /usr/bin/tailscale &> /dev/null; then
   printf "Tailscale is already installed.\n"
 else
