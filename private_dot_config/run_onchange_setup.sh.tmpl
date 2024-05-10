@@ -38,12 +38,12 @@ printf "OS \"$(uname)\" not supported. Please set fish as the default shell manu
 {{ end }}
 printf "\nIf the default shell was not changed, you can (probably) change it in the terminal preferences.\n"
 
-printf "\n##################################################\n"
-printf "## Installing Linux tools"
-printf "\n##################################################\n"
-{{ if eq .chezmoi.os "linux" }}
-sudo apt install apt-transport-https ca-certificates curl software-properties-common -y
-{{ else }}
+# printf "\n##################################################\n"
+# printf "## Installing Linux tools"
+# printf "\n##################################################\n"
+# {{ if eq .chezmoi.os "linux" }}
+# sudo apt install apt-transport-https ca-certificates curl software-properties-common -y
+# {{ else }}
 
 printf "\n##################################################\n"
 printf "## Installing zoxide"
