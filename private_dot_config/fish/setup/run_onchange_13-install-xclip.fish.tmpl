@@ -4,7 +4,11 @@ printf "\n##################################################\n"
 printf "## Installing xclip"
 printf "\n##################################################\n"
 {{ if eq .osid "linux-ubuntu" }}
-sudo apt install -y xclip
+if command -v xclip > /dev/null 2>&1
+  printf "xclip is already installed.\n"
+else
+  sudo apt install -y xclip
+end
 {{ else }}
 printf "OS \"$(uname)\" not supported. Skipping.\n"
 {{ end }}
