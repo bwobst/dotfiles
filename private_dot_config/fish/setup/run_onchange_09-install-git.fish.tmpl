@@ -1,0 +1,14 @@
+#!/usr/bin/fish
+
+printf "\n##################################################\n"
+printf "## Installing git"
+printf "\n##################################################\n"
+{{ if eq .osid "linux-ubuntu" }}
+if command -v git > /dev/null 2>&1
+  printf "git is already installed.\n"
+else
+  sudo apt install git
+end
+{{ else }}
+printf "OS \"$(uname)\" not supported. Please check if you need to install.\n"
+{{ end }}
