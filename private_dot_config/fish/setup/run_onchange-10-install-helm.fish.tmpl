@@ -1,0 +1,17 @@
+#!/usr/bin/fish
+
+printf "\n##################################################\n"
+printf "## Installing helm"
+printf "\n##################################################\n"
+{{ if or .osid "darwin" "linux-ubuntu" }}
+if command -v helm > /dev/null 2>&1
+  printf "helm is already installed.\n"
+else
+  curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
+  chmod 700 get_helm.sh
+  ./get_helm.sh
+  rm ./get_helm.sh
+end
+{{ else }}
+printf "OS \"$(uname)\" not supported. Please check if you need to install helm.\n"
+{{ end }}
