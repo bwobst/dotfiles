@@ -1,0 +1,20 @@
+#!/usr/bin/fish
+
+printf "\n##################################################\n"
+printf "## Installing yq"
+printf "\n##################################################\n"
+{{ if eq .osid "darwin" }}
+if command -v yq > /dev/null 2>&1
+  printf "yq is already installed.\n"
+else
+  brew install yq
+end
+{{ else if eq .osid "linux-ubuntu" }}
+if command -v yq > /dev/null 2>&1
+  printf "yq is already installed.\n"
+else
+  snap install yq
+end
+{{ else }}
+printf "OS \"$(uname)\" not supported. Please check if you need to install yq.\n"
+{{ end }}

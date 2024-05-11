@@ -1,0 +1,20 @@
+#!/usr/bin/fish
+
+printf "\n##################################################\n"
+printf "## Installing jq"
+printf "\n##################################################\n"
+{{ if eq .osid "darwin" }}
+if command -v jq > /dev/null 2>&1
+  printf "jq is already installed.\n"
+else
+  brew install jq
+end
+{{ else if eq .osid "linux-ubuntu" }}
+if command -v jq > /dev/null 2>&1
+  printf "jq is already installed.\n"
+else
+  sudo apt-get install -y jq
+end
+{{ else }}
+printf "OS \"$(uname)\" not supported. Please check if you need to install jq.\n"
+{{ end }}
