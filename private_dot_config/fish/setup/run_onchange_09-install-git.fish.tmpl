@@ -7,7 +7,7 @@ printf "\n##################################################\n"
 if command -v git > /dev/null 2>&1
   printf "git is already installed.\n"
 else
-  sudo apt install git
+  sudo apt install git -y
 end
 {{ else }}
 printf "OS \"$(uname)\" not supported. Please check if you need to install.\n"
