@@ -145,4 +145,5 @@ starship init fish | source
 ## Set exports
 ####################################################################################################
 export GITHUB_USERNAME=bwobst
+# Have to use $HOME instead of ~ because ~ is not expanded in fish.
 export KUBECONFIG=$HOME/.kube/config
