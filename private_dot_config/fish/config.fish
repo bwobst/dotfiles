@@ -145,3 +145,4 @@ starship init fish | source
 ## Set exports
 ####################################################################################################
 export GITHUB_USERNAME=bwobst
+export KUBECONFIG=~/.kube/config
