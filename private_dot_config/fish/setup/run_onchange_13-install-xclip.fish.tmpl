@@ -1,0 +1,10 @@
+#!{{ lookPath "fish" }}
+
+printf "\n##################################################\n"
+printf "## Installing xclip"
+printf "\n##################################################\n"
+{{ if eq .osid "linux-ubuntu" }}
+sudo apt install -y xclip
+{{ else }}
+printf "OS \"$(uname)\" not supported. Skipping.\n"
+{{ end }}

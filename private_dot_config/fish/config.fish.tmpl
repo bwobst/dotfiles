@@ -115,6 +115,9 @@ alias yql "yq --colors | less -IR"
 
 {{ if eq .osid "darwin" }}
 alias tailscale "/Applications/Tailscale.app/Contents/MacOS/Tailscale"
+{{ else if eq .osid "linux-ubuntu" }}
+alias pbcopy "xclip -selection clipboard"
+alias pbpaste "xclip -selection clipboard -o"
 {{ end }}
 
 ####################################################################################################

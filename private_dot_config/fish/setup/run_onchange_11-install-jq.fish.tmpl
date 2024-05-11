@@ -13,7 +13,7 @@ end
 if command -v jq > /dev/null 2>&1
   printf "jq is already installed.\n"
 else
-  sudo apt-get install -y jq
+  sudo apt install -y jq
 end
 {{ else }}
 printf "OS \"$(uname)\" not supported. Please check if you need to install jq.\n"

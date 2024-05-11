@@ -11,7 +11,7 @@ else
   {{ else if eq .osid "linux-ubuntu" }}
   sudo apt-add-repository ppa:fish-shell/release-3 -y
   sudo apt update
-  sudo apt install fish -y
+  sudo apt install -y fish
   {{ else }}
   printf "OS \"$(uname)\" not supported. Please install fish manually.\n"
   {{ end }}
