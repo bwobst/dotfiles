@@ -112,12 +112,9 @@ alias reload "source ~/.config/fish/config.fish"
 alias jql "jq --color-output | less -IR"
 alias yql "yq --colors | less -IR"
 
-{{ if eq .osid "darwin" }}
+
 alias tailscale "/Applications/Tailscale.app/Contents/MacOS/Tailscale"
-{{ else if eq .osid "linux-ubuntu" }}
-alias pbcopy "xclip -selection clipboard"
-alias pbpaste "xclip -selection clipboard -o"
-{{ end }}
+
 
 ####################################################################################################
 ## Apex Platform Environment Variables
@@ -151,3 +148,8 @@ starship init fish | source
 export GITHUB_USERNAME=bwobst
 # Have to use $HOME instead of ~ because ~ is not expanded in fish.
 export KUBECONFIG=$HOME/.kube/config
+
+####################################################################################################
+## Set default Nodejs version
+####################################################################################################
+nvm use 22.4.0 --silent
