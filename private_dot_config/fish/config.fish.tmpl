@@ -112,9 +112,9 @@ alias reload "source ~/.config/fish/config.fish"
 alias jql "jq --color-output | less -IR"
 alias yql "yq --colors | less -IR"
 
-
+{{ if eq .osid "darwin" }}
 alias tailscale "/Applications/Tailscale.app/Contents/MacOS/Tailscale"
-
+{{ end }}
 
 ####################################################################################################
 ## Apex Platform Environment Variables
