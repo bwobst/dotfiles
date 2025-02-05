@@ -1,0 +1,30 @@
+#!{{ lookPath "bash" }}
+
+printf "\n##################################################\n"
+printf "## Installing OS package manager"
+printf "\n##################################################\n"
+{{ if or .osid "darwin" }}
+if command -v brew &> /dev/null; then
+  printf "Homebrew is already installed.\n"
+else
+  printf "Installing Homebrew...\n"
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+fi
+{{ else if eq .osid "linux-ubuntu" "linux-debian" }}
+if command -v apt &> /dev/null; then
+  printf "apt is already installed.\n"
+else
+  printf "Installing apt...\n"
+  sudo apt update
+  sudo apt install -y apt
+fi
+{{ else if eq .osid "windows" }}
+if command -v choco &> /dev/null; then
+  printf "Chocolatey is already installed.\n"
+else
+  printf "Installing Chocolatey...\n"
+  Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+fi
+{{ else }}
+printf "OS \"$(uname)\" not supported. Please check if you need to install an OS package manager.\n"
+{{ end }}

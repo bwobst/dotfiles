@@ -1,0 +1,16 @@
+#!{{ lookPath "fish" }}
+
+printf "\n##################################################\n"
+printf "## Installing k9s"
+printf "\n##################################################\n"
+{{ if or .osid "darwin" "linux-ubuntu" }}
+if command -v k9s > /dev/null 2>&1
+  printf "k9s is already installed.\n"
+else
+  brew install derailed/k9s/k9s
+end
+{{ else if eq .osid "windows" }}
+choco install k9s
+{{ else }}
+printf "OS \"$(uname)\" not supported. Please check if you need to install k9s.\n"
+{{ end }}
