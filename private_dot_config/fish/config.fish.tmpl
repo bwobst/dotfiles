@@ -152,6 +152,6 @@ export KUBECONFIG=$HOME/.kube/config
 ####################################################################################################
 ## Export secrets
 ####################################################################################################
-if test -f ./secrets.fish
-  source ./secrets.fish
+if test -f $HOME/.config/fish/secrets.fish
+  source $HOME/.config/fish/secrets.fish
 end
