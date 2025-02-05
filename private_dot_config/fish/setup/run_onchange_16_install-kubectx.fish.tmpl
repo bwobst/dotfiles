@@ -1,0 +1,14 @@
+#!{{ lookPath "fish" }}
+
+printf "\n##################################################\n"
+printf "## Installing kubectx"
+printf "\n##################################################\n"
+{{ if or .osid "darwin" "linux-ubuntu" }}
+if command -v kubectx > /dev/null 2>&1
+  printf "kubectx is already installed.\n"
+else
+  brew install kubectx
+end
+{{ else }}
+printf "OS \"$(uname)\" not supported. Please check if you need to install kubectx.\n"
+{{ end }}
