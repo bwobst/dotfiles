@@ -1,0 +1,14 @@
+#!{{ lookPath "fish" }}
+
+printf "\n##################################################\n"
+printf "## Installing libpq"
+printf "\n##################################################\n"
+{{ if or .osid "darwin" "linux-ubuntu" }}
+if command -v libpq > /dev/null 2>&1
+  printf "libpq is already installed.\n"
+else
+  brew install libpq
+end
+{{ else }}
+printf "OS \"$(uname)\" not supported. Please check if you need to install libpq.\n"
+{{ end }}
