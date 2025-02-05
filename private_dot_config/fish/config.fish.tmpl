@@ -149,7 +149,10 @@ export GITHUB_USERNAME=bwobst
 # Have to use $HOME instead of ~ because ~ is not expanded in fish.
 export KUBECONFIG=$HOME/.kube/config
 
-# TRD
-export CLOUDSMITH_API_KEY_TRD=
-export FONTAWESOME_NPM_AUTH_TOKEN=
-export NPM_TOKEN=
+####################################################################################################
+## Export secrets
+####################################################################################################
+if test -f ./secrets.fish
+  source ./secrets.fish
+end
+
