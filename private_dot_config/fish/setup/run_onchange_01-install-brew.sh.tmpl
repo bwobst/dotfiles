@@ -1,0 +1,14 @@
+#!{{ lookPath "bash" }}
+
+printf "\n##################################################\n"
+printf "## Installing Homebrew"
+printf "\n##################################################\n"
+if command -v brew &> /dev/null; then
+  printf "Homebrew is already installed.\n"
+else
+  {{ if eq .osid "darwin" }}
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  {{ else }}
+  printf "OS \"$(uname)\" not supported.\n"
+  {{ end }}
+fi

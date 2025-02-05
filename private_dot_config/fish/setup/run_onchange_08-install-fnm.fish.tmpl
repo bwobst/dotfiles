@@ -1,0 +1,15 @@
+#!{{ lookPath "fish" }}
+
+printf "\n##################################################\n"
+printf "## Installing fnm"
+printf "\n##################################################\n"
+{{ if or .osid "darwin" "linux-ubuntu" }}
+if type fnm > /dev/null 2>&1
+  printf "fnm is already installed.\n"
+else
+  curl -fsSL https://fnm.vercel.app/install | bash
+end
+{{ else }}
+printf "OS \"$(uname)\" not supported. Please install fnm manually.\n"
+printf "https://github.com/Schniz/fnm?tab=readme-ov-file#manually\n"
+{{ end }}
