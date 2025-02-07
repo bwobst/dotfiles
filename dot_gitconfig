@@ -6,9 +6,18 @@
 
   path = ~/.gitconfig-home
 
+[includeIf "gitdir:/Users/home/"]
+
+  path = ~/.gitconfig-home
+
 [includeIf "gitdir:~/code/work/"]
 
   path = ~/.gitconfig-work
+
+[includeIf "gitdir:/Users/work/"]
+
+  path = ~/.gitconfig-work
+
 
 [pager]
 
