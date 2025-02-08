@@ -4,7 +4,7 @@ printf "\n##################################################\n"
 printf "## Installing libpq"
 printf "\n##################################################\n"
 {{ if or .osid "darwin" "linux-ubuntu" }}
-if command -v libpq > /dev/null 2>&1
+if command -v psql > /dev/null 2>&1
   printf "libpq is already installed.\n"
 else
   brew install libpq
