@@ -1,0 +1,14 @@
+#!{{ lookPath "fish" }}
+
+printf "\n##################################################\n"
+printf "## Installing coreutils"
+printf "\n##################################################\n"
+{{ if or .osid "darwin" "linux-ubuntu" }}
+if command -v coreutils > /dev/null 2>&1
+  printf "coreutils is already installed.\n"
+else
+  brew install coreutils
+end
+{{ else }}
+printf "OS \"$(uname)\" not supported. Please check if you need to install coreutils.\n"
+{{ end }}
