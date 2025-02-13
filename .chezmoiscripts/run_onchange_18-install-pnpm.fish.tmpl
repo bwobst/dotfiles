@@ -1,0 +1,14 @@
+#!{{ lookPath "fish" }}
+
+printf "\n##################################################\n"
+printf "## Installing pnpm"
+printf "\n##################################################\n"
+{{ if or .osid "darwin" "linux-ubuntu" }}
+if command -v pnpm > /dev/null 2>&1
+  printf "pnpm is already installed.\n"
+else
+  brew install pnpm
+end
+{{ else }}
+printf "OS \"$(uname)\" not supported. Please check if you need to install pnpm.\n"
+{{ end }}
