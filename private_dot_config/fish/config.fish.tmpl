@@ -44,6 +44,8 @@ fish_add_path -gP "$HOMEBREW_PREFIX/bin" "$HOMEBREW_PREFIX/sbin";
 ####################################################################################################
 ## Aliases
 ####################################################################################################
+
+# Directory
 alias .. "cd .."
 alias ... "cd ../.."
 alias .... "cd ../../.."
@@ -53,6 +55,7 @@ alias dl "cd ~/Downloads"
 alias dt "cd ~/Desktop"
 alias c "cd ~/code"
 
+# Git
 alias g "git"
 alias gd "git diff"
 alias gac "git add . && git commit -am $argv"
@@ -70,12 +73,18 @@ alias gmetro "git log --graph --abbrev-commit --decorate --format=format:'%C(bol
 
 alias catpack "cat package.json | jq"
 
+# NPM
 alias ns "npm run start"
 alias nt "npm run test"
 alias ntw "npm run test:watch"
 alias ntc "npm run test:coverage"
 
+# Kubernetes
 alias k "kubectl"
+
+# Docker
+alias dcu "docker compose up"
+alias dcd "docker compose down
 
 # List all files colorized in long format
 alias l "ls -lFG"
